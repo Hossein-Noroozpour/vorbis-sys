@@ -111,55 +111,36 @@ extern {
     pub fn vorbis_info_blocksize(vi: *mut vorbis_info, zo: libc::c_int) -> libc::c_int;
     pub fn vorbis_comment_init(vc: *mut vorbis_comment);
     pub fn vorbis_comment_add(vc: *mut vorbis_comment, comment: *const libc::c_char);
-    pub fn vorbis_comment_add_tag(vc: *mut vorbis_comment, tag: *const libc::c_char,
-        contents: *const libc::c_char);
-    pub fn vorbis_comment_query(vc: *mut vorbis_comment, tag: *const libc::c_char,
-        count: libc::c_int) -> *mut libc::c_char;
-    pub fn vorbis_comment_query_count(vc: *mut vorbis_comment, tag: *const libc::c_char)
-        -> libc::c_int;
+    pub fn vorbis_comment_add_tag(vc: *mut vorbis_comment, tag: *const libc::c_char, contents: *const libc::c_char);
+    pub fn vorbis_comment_query(vc: *mut vorbis_comment, tag: *const libc::c_char, count: libc::c_int) -> *mut libc::c_char;
+    pub fn vorbis_comment_query_count(vc: *mut vorbis_comment, tag: *const libc::c_char) -> libc::c_int;
     pub fn vorbis_comment_clear(vc: *mut vorbis_comment);
-
     pub fn vorbis_block_init(v: *mut vorbis_dsp_state, vb: *mut vorbis_block) -> libc::c_int;
     pub fn vorbis_block_clear(vb: *mut vorbis_block) -> libc::c_int;
     pub fn vorbis_dsp_clear(v: *mut vorbis_dsp_state);
-    pub fn vorbis_granule_time(v: *mut vorbis_dsp_state, granulepos: ogg::ogg_int64_t)
-        -> libc::c_double;
-
+    pub fn vorbis_granule_time(v: *mut vorbis_dsp_state, granulepos: ogg::ogg_int64_t) -> libc::c_double;
     pub fn vorbis_version_string() -> *const libc::c_char;
-
     pub fn vorbis_analysis_init(v: *mut vorbis_dsp_state,vi: *mut vorbis_info) -> libc::c_int;
-    pub fn vorbis_commentheader_out(vc: *mut vorbis_comment, op: *mut ogg::ogg_packet)
-        -> libc::c_int;
-    pub fn vorbis_analysis_headerout(v: *mut vorbis_dsp_state, vc: *mut vorbis_comment,
-        op: *mut ogg::ogg_packet, op_comm: *mut ogg::ogg_packet,
-        op_code: *mut ogg::ogg_packet) -> libc::c_int;
-    pub fn vorbis_analysis_buffer(v: *mut vorbis_dsp_state, vals: libc::c_int)
-        -> *mut *mut libc::c_float;
+    pub fn vorbis_commentheader_out(vc: *mut vorbis_comment, op: *mut ogg::ogg_packet) -> libc::c_int;
+    pub fn vorbis_analysis_headerout(v: *mut vorbis_dsp_state, vc: *mut vorbis_comment, op: *mut ogg::ogg_packet, op_comm: *mut ogg::ogg_packet, op_code: *mut ogg::ogg_packet) -> libc::c_int;
+    pub fn vorbis_analysis_buffer(v: *mut vorbis_dsp_state, vals: libc::c_int) -> *mut *mut libc::c_float;
     pub fn vorbis_analysis_wrote(v: *mut vorbis_dsp_state, vals: libc::c_int) -> libc::c_int;
     pub fn vorbis_analysis_blockout(v: *mut vorbis_dsp_state, vb: *mut vorbis_block) -> libc::c_int;
     pub fn vorbis_analysis(vb: *mut vorbis_block, op: *mut ogg::ogg_packet) -> libc::c_int;
-
     pub fn vorbis_bitrate_addblock(vb: *mut vorbis_block) -> libc::c_int;
-    pub fn vorbis_bitrate_flushpacket(v: *mut vorbis_dsp_state, op: *mut ogg::ogg_packet)
-        -> libc::c_int;
-
+    pub fn vorbis_bitrate_flushpacket(v: *mut vorbis_dsp_state, op: *mut ogg::ogg_packet) -> libc::c_int;
     pub fn vorbis_synthesis_idheader(op: *mut ogg::ogg_packet) -> libc::c_int;
-    pub fn vorbis_synthesis_headerin(vi: *mut vorbis_info, vc: *mut vorbis_comment,
-        op: *mut ogg::ogg_packet) -> libc::c_int;
-
+    pub fn vorbis_synthesis_headerin(vi: *mut vorbis_info, vc: *mut vorbis_comment, op: *mut ogg::ogg_packet) -> libc::c_int;
     pub fn vorbis_synthesis_init(v: *mut vorbis_dsp_state, vi: *mut vorbis_info) -> libc::c_int;
     pub fn vorbis_synthesis_restart(v: *mut vorbis_dsp_state) -> libc::c_int;
     pub fn vorbis_synthesis(vb: *mut vorbis_block,op: *mut ogg::ogg_packet) -> libc::c_int;
-    pub fn vorbis_synthesis_trackonly(vb: *mut vorbis_block,
-        op: *mut ogg::ogg_packet) -> libc::c_int;
+    pub fn vorbis_synthesis_trackonly(vb: *mut vorbis_block, op: *mut ogg::ogg_packet) -> libc::c_int;
     pub fn vorbis_synthesis_blockin(v: *mut vorbis_dsp_state,vb: *mut vorbis_block) -> libc::c_int;
-    pub fn vorbis_synthesis_pcmout(v: *mut vorbis_dsp_state, pcm: *mut *mut *mut libc::c_float)
-        -> libc::c_int;
-    pub fn vorbis_synthesis_lapout(v: *mut vorbis_dsp_state, pcm: *mut *mut *mut libc::c_float)
-        -> libc::c_int;
+    pub fn vorbis_synthesis_pcmout(v: *mut vorbis_dsp_state, pcm: *mut *mut *mut libc::c_float) -> libc::c_int;
+    pub fn vorbis_synthesis_lapout(v: *mut vorbis_dsp_state, pcm: *mut *mut *mut libc::c_float) -> libc::c_int;
     pub fn vorbis_synthesis_read(v: *mut vorbis_dsp_state, samples: libc::c_int) -> libc::c_int;
     pub fn vorbis_packet_blocksize(vi: *mut vorbis_info, op: *mut ogg::ogg_packet) -> libc::c_long;
-
     pub fn vorbis_synthesis_halfrate(v: *mut vorbis_info, flag: libc::c_int) -> libc::c_int;
     pub fn vorbis_synthesis_halfrate_p(v: *mut vorbis_info) -> libc::c_int;
+	pub fn vorbis_encode_init(vi: *mut vorbis_info, channels: libc::c_long, rate: libc::c_long, max_bitrate: libc::c_long, nominal_bitrate: libc::c_long, min_bitrate: libc::c_long) -> libc::c_int;
 }
