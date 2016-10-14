@@ -105,7 +105,7 @@ pub const OV_EBADPACKET: libc::c_int = -136;
 pub const OV_EBADLINK: libc::c_int = -137;
 pub const OV_ENOSEEK: libc::c_int = -138;
 
-extern {
+extern "C" {
     pub fn vorbis_info_init(vi: *mut vorbis_info);
     pub fn vorbis_info_clear(vi: *mut vorbis_info);
     pub fn vorbis_info_blocksize(vi: *mut vorbis_info, zo: libc::c_int) -> libc::c_int;
